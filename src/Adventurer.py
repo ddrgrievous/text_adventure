@@ -11,5 +11,5 @@ class Adventurer(object):
         pass
     
     def create(self):
-        self.name = raw_input("What is your Adventurer's Name?:")
+        self.name = raw_input("What is your Adventurer's Name?: ")
         

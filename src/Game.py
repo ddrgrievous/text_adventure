@@ -17,7 +17,7 @@ class Game(object):
         self.in_play = True
         print "Welcome to text_adventure!"
         print 'To start a new game enter  "start"'
-        print 'To a game enter "load" [character name]'
+        print 'Or to a game enter "load" [character name]'
         valid_input = False
         
         # Keep looping through responses until they choose a correct response
