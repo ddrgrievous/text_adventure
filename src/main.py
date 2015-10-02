@@ -8,7 +8,6 @@ from Game import Game
 if __name__ == '__main__':
     game_in_play = True    
     
-    #start the game
     my_game = Game()
     
     my_game.start()
