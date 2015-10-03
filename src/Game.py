@@ -4,11 +4,14 @@ Created on Oct 1, 2015
 @author: Jared
 '''
 from Adventurer import Adventurer
-
+from Map  import Map
+from TravelHandler import TravelHandler
 class Game(object):
 
-    my_adventurer = Adventurer()
+    map = Map()
+    my_adventurer = Adventurer(map)
     in_play = False
+    travel_handler = TravelHandler()
     
     def __init__(self):
         pass
@@ -33,6 +36,12 @@ class Game(object):
     def quit(self):
         self.in_play = False
         print "Come back soon!"
+        
+    def travel(self):
+        traveling = True
+        while traveling == True:
+            player_input = raw_input("Which direction will you travel?: ")
+            self.travel_handler.read_input(self, player_input)
         
     def display_help(self):
         print "quit: exits the game"

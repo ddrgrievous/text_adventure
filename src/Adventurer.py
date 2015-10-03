@@ -3,6 +3,7 @@ Created on Oct 1, 2015
 
 @author: Jared
 '''
+from Location import Location
 
 class Adventurer(object):
     
@@ -14,8 +15,8 @@ class Adventurer(object):
     items = []
     equipment = []
     spells = []
-    def __init__(self):
-        pass
+    def __init__(self, map):
+        self.location = Location(0,0,map)
     
     def create(self):
         self.name = raw_input("What is your Adventurer's Name?: ")
