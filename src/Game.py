@@ -13,6 +13,7 @@ class Game(object):
     in_play = False
     travel_handler = TravelHandler()
     
+    
     def __init__(self):
         pass
         
@@ -42,7 +43,4 @@ class Game(object):
         while traveling == True:
             player_input = raw_input("Which direction will you travel?: ")
             self.travel_handler.read_input(self, player_input)
-        
-    def display_help(self):
-        print "quit: exits the game"
-        print "save: saves your adventurer"
+        return 'new activity'
