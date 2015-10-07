@@ -6,13 +6,14 @@ Created on Oct 1, 2015
 from Adventurer import Adventurer
 from Map  import Map
 from TravelHandler import TravelHandler
+from CityHandler import CityHandler
 class Game(object):
 
     map = Map()
     my_adventurer = Adventurer(map)
     in_play = False
     travel_handler = TravelHandler()
-    
+    city_handler = CityHandler()
     
     def __init__(self):
         pass
@@ -39,8 +40,15 @@ class Game(object):
         print "Come back soon!"
         
     def travel(self):
-        traveling = True
-        while traveling == True:
+        # while they are still on a empty space keep traveling
+        while self.map.current_space == ' ' or self.map.current_space.lower() == 'd':
             player_input = raw_input("Which direction will you travel?: ")
             self.travel_handler.read_input(self, player_input)
-        return 'new activity'
+            
+    def city(self):
+        in_city = True
+        while in_city:
+            player_input = raw_input("What is your business in the city?: ")
+            in_city = self.city_handler.read_input(self, player_input)
+        
+        

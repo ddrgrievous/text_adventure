@@ -10,4 +10,5 @@ if __name__ == '__main__':
     my_game.start()
     while my_game.in_play == True:
         my_game.travel()
-
+        if my_game.map.current_space.lower() == 'c':
+            my_game.city()
