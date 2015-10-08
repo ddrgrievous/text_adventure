@@ -33,9 +33,9 @@ class CityHandler(object):
             print ('Invalid Input')
             return True
             
-        def display_help(self):
-            print 'The following commands are available while traveling:'
-            print 'up: Move adventurer up.'    
-            print 'leave: leave city'  
-            print 'map: View the map.'
-            print 'quit: Quit the game.' 
+    def display_help(self):
+        print 'The following commands are available while in the city:'
+        print 'up: Move adventurer up.'    
+        print 'leave: leave city'  
+        print 'map: View the map.'
+        print 'quit: Quit the game.' 

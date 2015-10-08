@@ -40,10 +40,11 @@ class Game(object):
         print "Come back soon!"
         
     def travel(self):
+        traveling = True
         # while they are still on a empty space keep traveling
-        while self.map.current_space == ' ' or self.map.current_space.lower() == 'd':
+        while traveling == True:
             player_input = raw_input("Which direction will you travel?: ")
-            self.travel_handler.read_input(self, player_input)
+            traveling = self.travel_handler.read_input(self, player_input)
             
     def city(self):
         in_city = True

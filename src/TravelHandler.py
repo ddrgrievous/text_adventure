@@ -12,13 +12,16 @@ class TravelHandler(object):
     def read_input(self, my_game, player_input):                
         # show available commands
         if player_input.lower() == "help":
-            self.display_help()           
+            self.display_help()
+            return True           
         # quit the game    
         elif player_input.lower() == "quit":
-            my_game.quit()   
+            my_game.quit()
+            return False   
         # display the map    
         elif player_input.lower() == "map":
             my_game.map.display(my_game.my_adventurer.location)
+            return True
         # move adventurer down     
         elif player_input.lower() == "down":
             # check to see if the move is going to put adventurer off the map
@@ -27,6 +30,7 @@ class TravelHandler(object):
                 my_game.my_adventurer.location = my_game.my_adventurer.location.move_down(my_game.map)
                 # display the map for the user
                 my_game.map.display(my_game.my_adventurer.location)
+                return self.is_traveling(my_game)                
             else:
                 print "Invalid Move"
         # move adventurer up        
@@ -37,6 +41,7 @@ class TravelHandler(object):
                 my_game.my_adventurer.location = my_game.my_adventurer.location.move_up(my_game.map)
                 # display the map for the user                
                 my_game.map.display(my_game.my_adventurer.location)
+                return self.is_traveling(my_game)                
             else:
                 print "Invalid Move"
         # move adventurer right        
@@ -47,8 +52,10 @@ class TravelHandler(object):
                 my_game.my_adventurer.location = my_game.my_adventurer.location.move_right(my_game.map)
                 # display the map for the user
                 my_game.map.display(my_game.my_adventurer.location)
+                return self.is_traveling(my_game)                
             else:
                 print "Invalid Move"
+                return True
         # move adventurer left        
         elif player_input.lower() == "left":
             # check to see if the move is going to put adventurer off the map            
@@ -57,11 +64,18 @@ class TravelHandler(object):
                 my_game.my_adventurer.location = my_game.my_adventurer.location.move_left(my_game.map)
                 # display the map for the user                
                 my_game.map.display(my_game.my_adventurer.location)
+                return self.is_traveling(my_game)
             else:
                 print "Invalid Move"
         else:
-            print 'Invalid command'   
-        
+            print 'Invalid command'
+               
+    def is_traveling(self, my_game):
+        if my_game.map.current_space.lower() == 'c':
+            return False
+        else:
+            return True
+            
     def display_help(self):
         print 'The following commands are available while traveling:'
         print 'up: Move adventurer up.'    
