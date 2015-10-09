@@ -14,7 +14,7 @@ class CityHandler(object):
         pass
     
     def read_input(self, my_game, player_input):
-         # show available commands
+        # show available commands
         if player_input.lower() == "help":
             self.display_help() 
             return True          
