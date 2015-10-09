@@ -11,12 +11,16 @@ class Adventurer(object):
     type = ""
     experience = 0
     stats = {'attack' : 0, 'health' : 0, 'magic' : 0, 'luck' : 0}
+    current_hp = 0
     level = 1
     items = []
     equipment = []
     spells = []
     def __init__(self, map):
         self.location = Location(0,0,map)
+        
+    def full_heal(self):
+        self.current_hp = self.stats['health'];
     
     def create(self):
         finished_creation = False
@@ -70,7 +74,7 @@ class Adventurer(object):
                     
                     if raw_input( "Is this correct? (y/n): ").lower() == 'y':
                         choosing_character = False
-                        finished_creation = True 
+                        finished_creation = True
                     else:
                         # reset the stats to 0 because they will choose again
                         for key in sorted(self.stats):
@@ -78,6 +82,14 @@ class Adventurer(object):
                         total_points = 15
             else:
                 print "Invalid Command"
+        
+        # set hp to health
+        self.current_hp = self.stats['health'] 
+    
+    def display_items(self):    
+        for i in range(0, len(self.items)):
+            print self.items[i].name.title()      
+            
                         
                 
             

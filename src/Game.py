@@ -7,13 +7,14 @@ from Adventurer import Adventurer
 from Map  import Map
 from TravelHandler import TravelHandler
 from CityHandler import CityHandler
+from HealthPotion import HealthPotion
 class Game(object):
-
+    
+    game_items = {'weak health potion' : HealthPotion(5,'weak health potion', 4)}
     map = Map()
     my_adventurer = Adventurer(map)
     in_play = False
     travel_handler = TravelHandler()
-    city_handler = CityHandler()
     
     def __init__(self):
         pass
@@ -47,9 +48,10 @@ class Game(object):
             traveling = self.travel_handler.read_input(self, player_input)
             
     def city(self):
+        city_handler = CityHandler()
         in_city = True
         while in_city:
             player_input = raw_input("What is your business in the city?: ")
-            in_city = self.city_handler.read_input(self, player_input)
+            in_city = city_handler.read_input(self, player_input)
         
         
