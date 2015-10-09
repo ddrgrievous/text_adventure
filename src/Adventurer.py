@@ -13,9 +13,11 @@ class Adventurer(object):
     stats = {'attack' : 0, 'health' : 0, 'magic' : 0, 'luck' : 0}
     current_hp = 0
     level = 1
+    gold = 10
     items = []
     equipment = []
     spells = []
+    
     def __init__(self, map):
         self.location = Location(0,0,map)
         
@@ -86,9 +88,12 @@ class Adventurer(object):
         # set hp to health
         self.current_hp = self.stats['health'] 
     
-    def display_items(self):    
+    def display_items(self):
+        print "Gold: " + str(self.gold)    
         for i in range(0, len(self.items)):
-            print self.items[i].name.title()      
+            print self.items[i].name.title()   
+    
+       
             
                         
                 

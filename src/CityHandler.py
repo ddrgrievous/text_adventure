@@ -40,8 +40,8 @@ class CityHandler(object):
             return True
           
     def display_help(self):
-        print 'The following commands are available while in the city:'
-        print 'up: Move adventurer up.'    
+        print 'The following commands are available while in the city:' 
         print 'leave: leave city'  
-        print 'map: View the map.'
-        print 'quit: Quit the game.' 
+        print 'map:   View the map.'
+        print 'quit:  Quit the game.' 
+        print 'shop:  Purchase items'
