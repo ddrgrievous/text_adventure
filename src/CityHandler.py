@@ -8,8 +8,6 @@ class CityHandler(object):
     '''
     classdocs
     '''
-    
-
     def __init__(self):
         self.store_handler = StoreHandler()
     

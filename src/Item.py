@@ -7,8 +7,7 @@ Created on Oct 8, 2015
 class Item(object):
     '''
     classdocs
-    '''
-    
+    '''    
 
     def __init__(self, name, value):
         '''
@@ -16,4 +15,3 @@ class Item(object):
         '''
         self.name  = name
         self.value = value
-    

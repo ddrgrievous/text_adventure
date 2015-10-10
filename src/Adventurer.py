@@ -4,6 +4,7 @@ Created on Oct 1, 2015
 @author: Jared
 '''
 from Location import Location
+from Weapon import Weapon
 
 class Adventurer(object):
     
@@ -13,9 +14,9 @@ class Adventurer(object):
     stats = {'attack' : 0, 'health' : 0, 'magic' : 0, 'luck' : 0}
     current_hp = 0
     level = 1
-    gold = 10
+    gold = 99999
     items = []
-    equipment = []
+    weapon = Weapon(0,'start', 0)
     spells = []
     
     def __init__(self, map):
@@ -89,9 +90,10 @@ class Adventurer(object):
         self.current_hp = self.stats['health'] 
     
     def display_items(self):
-        print "Gold: " + str(self.gold)    
+        print "Gold: " + str(self.gold)   
+        print "Weapon: " +  self.weapon.name.title() + " " + str(self.weapon.value)
         for i in range(0, len(self.items)):
-            print self.items[i].name.title()   
+            print self.items[i].name.title() + " " + str(self.items[i].value)   
     
        
             

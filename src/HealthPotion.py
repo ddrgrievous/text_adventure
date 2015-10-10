@@ -9,8 +9,8 @@ class HealthPotion(Item):
     '''
     classdocs
     '''
-    
 
+    type = 'usable'
     def __init__(self, potency, name, value):
         '''
         Constructor

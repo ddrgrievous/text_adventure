@@ -3,6 +3,7 @@ Created on Oct 1, 2015
 
 @author: Jared
 '''
+from Weapon import Weapon
 from Adventurer import Adventurer
 from Map  import Map
 from TravelHandler import TravelHandler
@@ -10,7 +11,8 @@ from CityHandler import CityHandler
 from HealthPotion import HealthPotion
 class Game(object):
     
-    game_items = {'weak health potion' : HealthPotion(5,'weak health potion', 4)}
+    game_items = {'weak health potion' : HealthPotion(5,'weak health potion', 20)}
+    game_weapons = {'golden axe' : Weapon(10, 'golden axe', 200)}
     map = Map()
     my_adventurer = Adventurer(map)
     in_play = False
