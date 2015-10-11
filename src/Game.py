@@ -13,7 +13,7 @@ class Game(object):
     
     game_items = {'weak health potion' : HealthPotion(5,'weak health potion', 20)}
     game_weapons = {'golden axe' : Weapon(10, 'golden axe', 200)}
-    map = Map()
+    map = Map(10,20)
     my_adventurer = Adventurer(map)
     in_play = False
     travel_handler = TravelHandler()
@@ -55,5 +55,9 @@ class Game(object):
         while in_city:
             player_input = raw_input("What is your business in the city?: ")
             in_city = city_handler.read_input(self, player_input)
+    
+    def dungeon(self):
+        player_input = raw_input("What is your business in the city?: ")
+        
         
         

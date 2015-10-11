@@ -12,3 +12,6 @@ if __name__ == '__main__':
         my_game.travel()
         if my_game.map.current_space.lower() == 'c':
             my_game.city()
+        
+        if my_game.map.current_space.lower() == 'd':
+            my_game.dungeon()
