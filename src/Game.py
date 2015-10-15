@@ -1,7 +1,7 @@
 '''
 Created on Oct 1, 2015
 
-@author: Jared
+@author: Jared, Ethan
 '''
 from Weapon import Weapon
 from Adventurer import Adventurer
@@ -9,6 +9,8 @@ from Map  import Map
 from TravelHandler import TravelHandler
 from CityHandler import CityHandler
 from HealthPotion import HealthPotion
+from Fight import Fight
+from Monster import Monster
 class Game(object):
     
     game_items = {'weak health potion' : HealthPotion(5,'weak health potion', 20)}
@@ -57,7 +59,19 @@ class Game(object):
             in_city = city_handler.read_input(self, player_input)
     
     def dungeon(self):
-        player_input = raw_input("What is your business in the city?: ")
+        player_input = raw_input("What is your business in the dungeon? heh placeholder: ")
+        
+    def fight (self):
+        fight_handler = Fight()
+        monster = Monster()
+        if Adventurer.full_heal(self) > 0 :
+            #-----------------------------: Note to self :-------------------------------------------------------------
+            #this needs to be changed, so that dialog is called at the start of fight_calculations instead of separatly
+            player_input = fight_handler.dialog()
+            fight_handler.fight_calcuation(Adventurer, monster, player_input)
+        else :
+            print "You died of your wounds while traveling"
+            print "next time, heal after your battles"
         
         
         
