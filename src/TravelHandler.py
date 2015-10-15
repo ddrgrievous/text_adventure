@@ -73,6 +73,8 @@ class TravelHandler(object):
     def is_traveling(self, my_game):
         if my_game.map.current_space.lower() == 'c':
             return False
+        elif my_game.map.current_space.lower() =='m':
+            return False
         else:
             return True
             

@@ -59,19 +59,19 @@ class Game(object):
             in_city = city_handler.read_input(self, player_input)
     
     def dungeon(self):
-        player_input = raw_input("What is your business in the dungeon? heh placeholder: ")
+        player_input = raw_input("What is your business in the dungeon? : ")#placeholder
         
     def fight (self):
         fight_handler = Fight()
         monster = Monster()
-        if Adventurer.full_heal(self) > 0 :
-            #-----------------------------: Note to self :-------------------------------------------------------------
-            #this needs to be changed, so that dialog is called at the start of fight_calculations instead of separatly
-            player_input = fight_handler.dialog()
-            fight_handler.fight_calcuation(Adventurer, monster, player_input)
+        if Adventurer.current_hp > 0 :
+           
+            
+            fight_handler.fight_calcuation(Adventurer, monster, fight_handler.dialog())
+            # will calling fight handler dialog like this work?
         else :
-            print "You died of your wounds while traveling"
-            print "next time, heal after your battles"
+            print "Your HP is 0... that's awkward"
+            
         
         
         

@@ -23,6 +23,7 @@ class Adventurer(object):
         self.location = Location(0,0,map)
         
     def full_heal(self):
+        #I'm not sure what this is, should it be a healing function? I already have that in fightHandler -Ethan
         self.current_hp = self.stats['health'];
     
     def create(self):
@@ -54,9 +55,14 @@ class Adventurer(object):
                 self.stats['attack'] = 6
                 self.stats['magic']  = 1
                 self.stats['luck']   = 2
-                finished_creation = True  
+                finished_creation = True 
+            elif self.type.lower() == 'jared':
+                self.stats['health'] = 1
+                self.stats['attack'] = 1
+                self.stats['magic']  = 1
+                self.stats['luck']   = 25 
                       
-            # custom type means that they are able to choose their own stats
+            # custom type means that they are able to choose their own stats 
             elif self.type.lower() == 'custom':
                 print 'You get a total of 15 points to assign between attack, health, luck, and magic.'
                 total_points = 15
@@ -86,7 +92,9 @@ class Adventurer(object):
             else:
                 print "Invalid Command"
         
-        # set hp to health
+        # set hp to health -- 
+        # This doesn't work as far as I can tell :( trying to fix it now
+        #which is awkward, because I need it to work -Ethan
         self.current_hp = self.stats['health'] 
     
     def display_items(self):
