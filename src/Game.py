@@ -63,11 +63,14 @@ class Game(object):
         
     def fight (self):
         fight_handler = Fight()
+        # I don't know how to call adventurer... 
+        #------------------------------------------------------------------
+        my_adventurer = Adventurer(map)
         monster = Monster()
-        if Adventurer.current_hp > 0 :
+        if my_adventurer.current_hp > 0 :
            
             
-            fight_handler.fight_calcuation(Adventurer, monster, fight_handler.dialog())
+            fight_handler.fight_calcuation(my_adventurer, monster, fight_handler.dialog())
             # will calling fight handler dialog like this work?
         else :
             print "Your HP is 0... that's awkward"

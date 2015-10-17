@@ -23,7 +23,7 @@ class Adventurer(object):
         self.location = Location(0,0,map)
         
     def full_heal(self):
-        #I'm not sure what this is, should it be a healing function? I already have that in fightHandler -Ethan
+        
         self.current_hp = self.stats['health'];
     
     def create(self):
@@ -92,10 +92,10 @@ class Adventurer(object):
             else:
                 print "Invalid Command"
         
-        # set hp to health -- 
-        # This doesn't work as far as I can tell :( trying to fix it now
-        #which is awkward, because I need it to work -Ethan
-        self.current_hp = self.stats['health'] 
+       
+        self.current_hp = self.stats['health']
+       
+        
     
     def display_items(self):
         print "Gold: " + str(self.gold)   
