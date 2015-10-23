@@ -58,10 +58,19 @@ class Adventurer(object):
                 self.stats['luck']   = 2
                 finished_creation = True 
             elif self.type.lower() == 'jared':
+                #Jared is actually unkillable, because until monsters hit lvl 16 you have 100% dodge chance
+                #Because of  the way luck works
                 self.stats['health'] = 1
                 self.stats['attack'] = 1
                 self.stats['magic']  = 1
                 self.stats['luck']   = 25 
+                finished_creation = True
+            elif self.type.lower() == 't':
+                #This is a profile that I change based on what I want to test
+                self.stats['health'] = 10
+                self.stats['attack'] = 1
+                self.stats['magic']  = 1200
+                self.stats['luck']   = 1 
                 finished_creation = True      
             # custom type means that they are able to choose their own stats 
             elif self.type.lower() == 'custom':
@@ -108,7 +117,7 @@ class Adventurer(object):
     def level_up(self):
         
             print " you leveled up!"
-            print "You are now level" + self.level
+            print "You are now level" + str(self.level)
             print "You get 3 points to put into stats!"
             lvl_points = 3
             print "press 1 to add a point to health"

@@ -20,6 +20,8 @@ class Monster(object):
         self.level = randint(adv_level,adv_level+2)
         self.name = self.monster_names[randint(0,len(self.monster_names)-1)]
         self.stats["health"] = randint(self.level-(self.level)+3,self.level+(self.level*3)-1)
-        self.stats["attack"] = randint(self.level-(self.level/2)+1,self.level+(self.level*2)-1)
+        
+        self.stats["attack"] = randint(self.level-(self.level/2)+1,self.level+(self.level*2))
+        
         self.currenthp = self.stats["health"]
         

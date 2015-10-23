@@ -15,7 +15,7 @@ class Fight(object):
     def dialog(self,monster):
         #I think that we should check that the player still has HP before we call this function, not as a while loop here... 
         # also I don't want to add more indents here, so there's that too.
-        print "you are minding your own business when you stumble across a " + monster.name
+        
         valid_input = False
         while valid_input == False:
             #/\ this loops so that you have to give good input
@@ -60,6 +60,7 @@ class Fight(object):
         #This first part will be simple, and will ignore atributes
         #the dialog function above returns a different number based on what you choose to do
         survived = True
+        print "you are minding your own business when you stumble across a " + monster.name
         while monster.currenthp > 0 and survived == True :
             player_input = self.dialog(monster)
             
@@ -77,8 +78,12 @@ class Fight(object):
                 monster.currenthp = monster.currenthp - (randint(hero.stats["magic"],hero.stats["magic"]+3))
             elif player_input == 3:
                 #magical Heal
-                print "healing light surrounds you"
-                hero.current_hp += randint(hero.stats["magic"],hero.stats["magic"]+2)
+                y_heal = hero.current_hp + randint(hero.stats["magic"],hero.stats["magic"]+2)
+                print "healing light surrounds you, healing you for " + str(y_heal)
+                hero.current_hp += y_heal
+                if hero.current_hp > hero.stats["health"] :
+                    hero.current_hp = hero.stats["health"]
+                print " your HP is now" + str(hero.current_hp)
                 pass
             elif player_input == 4:
                 #run away coward
@@ -89,16 +94,19 @@ class Fight(object):
                 print "You broke it... shame on you"
             if monster.currenthp <= 0 :
                 print " you killed the monster"
+                # this is kinda ghetto, but It makes XP scale of HP, and gold scale off luck
+                a  =hero.experience + monster.level + (hero.stats["health"]/2)
+                b =hero.gold + monster.level*2 + (hero.stats["luck"])
+                hero.experience += a
+                hero.gold += b
                 print " you gained " + str(monster.level ) + " Experience"
                 print " You found " + str(monster.level*2) + " Gold"
-                hero.experience += monster.level
-                hero.gold += monster.level*2
-                if hero.experience >= hero.level * 3 :
+                if hero.experience >= hero.level * 10 :
                     hero.level_up()
                 return True
             else :
                 print "the Monster is angry, it strikes at you!"
-                x = randint(monster.stats["attack"]+1,monster.stats["attack"]*2)-hero.armor
+                x = randint(monster.stats["attack"]-1,monster.stats["attack"]+1)-hero.armor
                 if (hero.stats["luck"] - randint(monster.level,monster.level + 10)) > 0 :
                     print " You quickly dodge out of the way"
                 else :

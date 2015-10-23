@@ -5,4 +5,4 @@
 
 # balancing leveling (leveling up has been added in adventurer)
 
-# making the game run better-- making stats more accessible, and the map more frequently visible (maybe show it after a fight/transaction in the city?)
+# making the game run better-- making stats more accessible<Im working on this>, and the map more frequently visible (maybe show it after a fight/transaction in the city?)
