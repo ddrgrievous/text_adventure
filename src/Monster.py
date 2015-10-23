@@ -17,11 +17,11 @@ class Monster(object):
     def __init__(self,adv_level):
         #monster names, and stats, these are pretty simple and straightforward
         # also the level has to scale, probably based on the players level, within 2-3 levels of the player... that shouldn't be too hard.
-        self.level = randint(adv_level,adv_level+2)
+        self.level = randint(adv_level,adv_level+1)
         self.name = self.monster_names[randint(0,len(self.monster_names)-1)]
-        self.stats["health"] = randint(self.level-(self.level)+3,self.level+(self.level*3)-1)
+        self.stats["health"] = randint(self.level-(self.level)+3,self.level+(self.level*2)-1)
         
-        self.stats["attack"] = randint(self.level-(self.level/2)+1,self.level+(self.level*2))
+        self.stats["attack"] = randint(self.level-(self.level/2)+1,self.level+(self.level+3))
         
         self.currenthp = self.stats["health"]
         

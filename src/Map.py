@@ -47,6 +47,8 @@ class Map(object):
         # the new space is now occupied by the adventurer    
         self.spaces[new_location.y][new_location.x] = '*'
         
+    def monsterdeath(self):
+        self.current_space = " "
     def discover_location(self):
         random_num = randint(1, 100)
         

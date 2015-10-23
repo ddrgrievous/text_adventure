@@ -14,7 +14,7 @@ class Adventurer(object):
     stats = {'attack' : 0, 'health' : 0, 'magic' : 0, 'luck' : 0}
     current_hp = 0
     level = 1
-    gold = 99999
+    gold = 0
     items = []
     weapon = Weapon(0,'start', 0)
     spells = []
@@ -115,8 +115,9 @@ class Adventurer(object):
     
        
     def level_up(self):
-        
+            self.experience = 0
             print " you leveled up!"
+            self.level += 1
             print "You are now level" + str(self.level)
             print "You get 3 points to put into stats!"
             lvl_points = 3

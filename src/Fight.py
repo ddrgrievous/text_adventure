@@ -60,22 +60,26 @@ class Fight(object):
         #This first part will be simple, and will ignore atributes
         #the dialog function above returns a different number based on what you choose to do
         survived = True
-        print "you are minding your own business when you stumble across a " + monster.name
+        print "you are minding your own business when you stumble across a " + str(monster.level) + monster.name
+        print "you have " + str(hero.current_hp) + "/" + str(hero.stats["health"]) + " Health," + str(hero.stats["attack"]) + " Attack, " + str(hero.stats["magic"]) + " Magic, " + str(hero.stats["luck"]) + " Luck!"
+        print "The monster has " + str(monster.currenthp) + " Health, and " + str(monster.stats["attack"]) + " attack"
         while monster.currenthp > 0 and survived == True :
             player_input = self.dialog(monster)
             
             if player_input == 1:
                 #physical attack
-                print "you strike at the " + monster.name
-                monster.currenthp = monster.currenthp - (randint(hero.stats["attack"],hero.stats["attack"]+3) - monster.armor)
+                y_attack =   (randint(hero.stats["attack"],hero.stats["attack"]+3) - monster.armor)
             
+                print "you strike at the " + monster.name + " dealing " + str(y_attack) + " damage"
+                monster.currenthp -=y_attack
             
                 pass
             elif player_input == 2:
                 #magical attack
-                print "You fire a bolt of magic at the " + monster.name
-            
-                monster.currenthp = monster.currenthp - (randint(hero.stats["magic"],hero.stats["magic"]+3))
+                y_magic =(randint(hero.stats["magic"],hero.stats["magic"]+3))
+                print "You fire a bolt of magic at the " + monster.name + " dealing " + str(y_magic) + " damage!"
+                monster.currenthp -= y_magic
+                
             elif player_input == 3:
                 #magical Heal
                 y_heal = hero.current_hp + randint(hero.stats["magic"],hero.stats["magic"]+2)
@@ -93,7 +97,7 @@ class Fight(object):
                 #they should never see this
                 print "You broke it... shame on you"
             if monster.currenthp <= 0 :
-                print " you killed the monster"
+                print " you killed the " + monster.name
                 # this is kinda ghetto, but It makes XP scale of HP, and gold scale off luck
                 a  =hero.experience + monster.level + (hero.stats["health"]/2)
                 b =hero.gold + monster.level*2 + (hero.stats["luck"])
@@ -105,7 +109,7 @@ class Fight(object):
                     hero.level_up()
                 return True
             else :
-                print "the Monster is angry, it strikes at you!"
+                print "the "+monster.name+" is angry, it strikes at you!"
                 x = randint(monster.stats["attack"]-1,monster.stats["attack"]+1)-hero.armor
                 if (hero.stats["luck"] - randint(monster.level,monster.level + 10)) > 0 :
                     print " You quickly dodge out of the way"

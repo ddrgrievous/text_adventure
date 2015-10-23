@@ -4,6 +4,9 @@ Created on Oct 2, 2015
 @author: Jared
 '''
 
+# Hey i took this out because you don't seem to have to import it, and importing it causes a circular dependency...
+# from main import my_game
+
 class TravelHandler(object):
 
     def __init__(self):
@@ -18,10 +21,22 @@ class TravelHandler(object):
         elif player_input.lower() == "quit":
             my_game.quit()
             return False   
-        # display the map    
+        # display the map
+       
         elif player_input.lower() == "map":
             my_game.map.display(my_game.my_adventurer.location)
             return True
+        
+        elif player_input.lower() == "stats":
+            print str(my_game.my_adventurer.current_hp) + "/" +  str(my_game.my_adventurer.stats["health"]) + "Health, " + str(my_game.my_adventurer.stats["attack"]) + " Attack, " + str(my_game.my_adventurer.stats["magic"]) + " magic, " + str(my_game.my_adventurer.stats["luck"]) + " luck"    
+            print "you are level " + str(my_game.my_adventurer.level) + " and you have " + str(my_game.my_adventurer.gold) + " Gold"
+            return True
+            
+        elif player_input.lower() =="heal":
+            my_game.my_adventurer.current_hp = my_game.my_adventurer.stats["health"]
+            print "you heal yourself back to full health"
+        
+        
         # move adventurer down     
         elif player_input.lower() == "down":
             # check to see if the move is going to put adventurer off the map
@@ -85,4 +100,5 @@ class TravelHandler(object):
         print 'down: Move adventurer down.'
         print 'left: Move adventurer left.'  
         print 'map: View the map.'
+        print "stats: Veiw your stats"
         print 'quit: Quit the game.'       

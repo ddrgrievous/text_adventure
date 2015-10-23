@@ -18,3 +18,4 @@ if __name__ == '__main__':
             
         if my_game.map.current_space.lower() =='m':
             my_game.fight()
+            my_game.map.monsterdeath()
