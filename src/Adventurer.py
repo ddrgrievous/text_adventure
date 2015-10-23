@@ -18,6 +18,7 @@ class Adventurer(object):
     items = []
     weapon = Weapon(0,'start', 0)
     spells = []
+    armor = 1
     
     def __init__(self, map):
         self.location = Location(0,0,map)
@@ -61,7 +62,7 @@ class Adventurer(object):
                 self.stats['attack'] = 1
                 self.stats['magic']  = 1
                 self.stats['luck']   = 25 
-                      
+                finished_creation = True      
             # custom type means that they are able to choose their own stats 
             elif self.type.lower() == 'custom':
                 print 'You get a total of 15 points to assign between attack, health, luck, and magic.'
@@ -104,9 +105,36 @@ class Adventurer(object):
             print self.items[i].name.title() + " " + str(self.items[i].value)   
     
        
-            
-                        
+    def level_up(self):
+        
+            print " you leveled up!"
+            print "You are now level" + self.level
+            print "You get 3 points to put into stats!"
+            lvl_points = 3
+            print "press 1 to add a point to health"
+            print "press 2 to add a point to attack"
+            print "press 3 to add a point to magic"
+            print "press 4 to add a point to luck"
+            while lvl_points > 0 :
                 
-            
+                inp = raw_input("press a number to add a point to that stat")
+                if inp == "1" :
+                    self.stats["health"] += 1
+                    print "You added a point to health"
+                    lvl_points -= 1
+                elif inp == "2" :
+                    self.stats["attack"] += 1
+                    print "You added a point to attack"
+                    lvl_points -= 1
+                elif inp == "3" :
+                    self.stats["magic"] += 1
+                    print "You added a point to magic"
+                    lvl_points -= 1
+                elif inp == "4" :
+                    self.stats["luck"] += 1
+                    print "You added a point to luck"
+                    lvl_points -= 1
+                else :
+                    print" invalid input, enter a number from 1 to 4"
             
             
