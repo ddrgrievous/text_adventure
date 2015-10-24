@@ -60,7 +60,14 @@ class Fight(object):
         #This first part will be simple, and will ignore atributes
         #the dialog function above returns a different number based on what you choose to do
         survived = True
-        print "you are minding your own business when you stumble across a " + str(monster.level) + monster.name
+        # Here I'm gonna add some more interesting elements to the storytelling
+        
+        events = ["you are minding your own business when you stumble across a level ","As you travel, you notice a level ", "Suddenly you are ambushed by a level ","You feel a little foolish when you walk right into a level ","You are thinking about football, and walk right into a level "]
+        current_event = events[randint(0,len(events)-1)]
+        print current_event + str(monster.level) +" "+ monster.name
+        
+        
+        
         print "you have " + str(hero.current_hp) + "/" + str(hero.stats["health"]) + " Health," + str(hero.stats["attack"]) + " Attack, " + str(hero.stats["magic"]) + " Magic, " + str(hero.stats["luck"]) + " Luck!"
         print "The monster has " + str(monster.currenthp) + " Health, and " + str(monster.stats["attack"]) + " attack"
         while monster.currenthp > 0 and survived == True :
@@ -99,12 +106,12 @@ class Fight(object):
             if monster.currenthp <= 0 :
                 print " you killed the " + monster.name
                 # this is kinda ghetto, but It makes XP scale of HP, and gold scale off luck
-                a  =hero.experience + monster.level + (hero.stats["health"]/2)
-                b =hero.gold + monster.level*2 + (hero.stats["luck"])
+                a  = monster.level + (hero.stats["health"]/2)
+                b = monster.level*2 + (hero.stats["luck"])
                 hero.experience += a
                 hero.gold += b
-                print " you gained " + str(monster.level ) + " Experience"
-                print " You found " + str(monster.level*2) + " Gold"
+                print " you gained " + str(a) + " Experience"
+                print " You found " + str(b) + " Gold"
                 if hero.experience >= hero.level * 10 :
                     hero.level_up()
                 return True

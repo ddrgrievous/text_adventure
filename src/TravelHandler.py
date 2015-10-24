@@ -101,4 +101,5 @@ class TravelHandler(object):
         print 'left: Move adventurer left.'  
         print 'map: View the map.'
         print "stats: Veiw your stats"
+        print "heal: heal yourself back to full"
         print 'quit: Quit the game.'       
