@@ -38,7 +38,7 @@ class TravelHandler(object):
         
         
         # move adventurer down     
-        elif player_input.lower() == "down":
+        elif player_input.lower() == "down" or player_input.lower() == "south" or player_input.lower() == "d" or player_input.lower() == "s":
             # check to see if the move is going to put adventurer off the map
             if my_game.my_adventurer.location.y + 1 < len(my_game.map.spaces):
                 # update the map and the adventurer's location
@@ -49,7 +49,7 @@ class TravelHandler(object):
             else:
                 print "Invalid Move"
         # move adventurer up        
-        elif player_input.lower() == "up":
+        elif player_input.lower() == "up" or player_input.lower() == "north" or player_input.lower() == "u" or player_input.lower() == "n":
             # check to see if the move is going to put adventurer off the map            
             if my_game.my_adventurer.location.y - 1 >= 0:           
                 # update the map and the adventurer's location
@@ -60,7 +60,7 @@ class TravelHandler(object):
             else:
                 print "Invalid Move"
         # move adventurer right        
-        elif player_input.lower() == "right":
+        elif player_input.lower() == "right" or player_input.lower() == "east" or player_input.lower() == "r" or player_input.lower() == "e":
             # check to see if the move is going to put adventurer off the map            
             if my_game.my_adventurer.location.x + 1 < len(my_game.map.spaces[my_game.my_adventurer.location.y]):
                 # update the map and the adventurer's location                
@@ -72,7 +72,7 @@ class TravelHandler(object):
                 print "Invalid Move"
                 return True
         # move adventurer left        
-        elif player_input.lower() == "left":
+        elif player_input.lower() == "left" or player_input.lower() == "west" or player_input.lower() == "l" or player_input.lower() == "w":
             # check to see if the move is going to put adventurer off the map            
             if my_game.my_adventurer.location.x - 1 >= 0:
                 # update the map and the adventurer's location                   

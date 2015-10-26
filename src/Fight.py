@@ -62,14 +62,14 @@ class Fight(object):
         survived = True
         # Here I'm gonna add some more interesting elements to the storytelling
         
-        events = ["you are minding your own business when you stumble across a level ","As you travel, you notice a level ", "Suddenly you are ambushed by a level ","You feel a little foolish when you walk right into a level ","You are thinking about football, and walk right into a level "]
+        events = ["you are minding your own business when you stumble across a level ","As you travel, you notice a level ", "Suddenly you are ambushed by a level ","You feel a little foolish when you walk right into a level ","You are thinking about awesome stuff, and walk right into a level ","Your journeying is sudden interrupted by a level "]
         current_event = events[randint(0,len(events)-1)]
         print current_event + str(monster.level) +" "+ monster.name
         
         
         
         print "you have " + str(hero.current_hp) + "/" + str(hero.stats["health"]) + " Health," + str(hero.stats["attack"]) + " Attack, " + str(hero.stats["magic"]) + " Magic, " + str(hero.stats["luck"]) + " Luck!"
-        print "The monster has " + str(monster.currenthp) + " Health, and " + str(monster.stats["attack"]) + " attack"
+        print "The "+monster.name+" has " + str(monster.currenthp) + " Health, and " + str(monster.stats["attack"]) + " attack"
         while monster.currenthp > 0 and survived == True :
             player_input = self.dialog(monster)
             
