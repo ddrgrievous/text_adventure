@@ -12,13 +12,19 @@ class Adventurer(object):
     type = ""
     experience = 0
     stats = {'attack' : 0, 'health' : 0, 'magic' : 0, 'luck' : 0}
+    true_hp = 0
+    true_magic = 0
+    true_mana = 0
+    true_attack = 0
     current_hp = 0
     level = 1
-    gold = 0
+    gold = 1000
     items = []
     weapon = Weapon(0,'start', 0)
     spells = []
     armor = 1
+    
+   
     
     def __init__(self, map):
         self.location = Location(0,0,map)
@@ -103,7 +109,12 @@ class Adventurer(object):
                 print "Invalid Command"
         
        
-        self.current_hp = self.stats['health']
+        # Here Im calling the stat modifiers, so that heros have more health and stuff
+        self.true_hp = self.stats["health"] * 12
+        self.true_attack = self.stats["attack"] * 4
+        self.true_magic = self.stats["magic"] * 4
+        self.true_mana = self.stats["magic"] * 5
+        self.current_hp = self.true_hp
        
         
     

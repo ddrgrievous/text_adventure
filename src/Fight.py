@@ -68,41 +68,45 @@ class Fight(object):
         
         
         
-        print "you have " + str(hero.current_hp) + "/" + str(hero.stats["health"]) + " Health," + str(hero.stats["attack"]) + " Attack, " + str(hero.stats["magic"]) + " Magic, " + str(hero.stats["luck"]) + " Luck!"
-        print "The "+monster.name+" has " + str(monster.currenthp) + " Health, and " + str(monster.stats["attack"]) + " attack"
+        print "you have " + str(hero.current_hp) + "/" + str(hero.true_hp) + " Health," + str(hero.true_attack) + " Attack, " + str(hero.true_magic) + " Magic, " + str(hero.stats["luck"]) + " Luck!"
+        print "The "+monster.name+" has " + str(monster.currenthp) + " Health, and " + str(monster.true_attack) + " attack"
         while monster.currenthp > 0 and survived == True :
             player_input = self.dialog(monster)
             
             if player_input == 1:
                 #physical attack
-                y_attack =   (randint(hero.stats["attack"],hero.stats["attack"]+3) - monster.armor)
-            
+                y_attack =   (randint(hero.true_attack-1,hero.true_attack+2) - monster.armor)
+                if y_attack < 0 :
+                    y_attack = 0
                 print "you strike at the " + monster.name + " dealing " + str(y_attack) + " damage"
                 monster.currenthp -=y_attack
             
                 pass
             elif player_input == 2:
+                # Don't forget to impliment mana and stuff
                 #magical attack
-                y_magic =(randint(hero.stats["magic"],hero.stats["magic"]+3))
+                y_magic =(randint(hero.true_magic-1,hero.true_magic+2))
+                if y_magic < 0 :
+                    y_magic = 0;
                 print "You fire a bolt of magic at the " + monster.name + " dealing " + str(y_magic) + " damage!"
                 monster.currenthp -= y_magic
                 
             elif player_input == 3:
                 #magical Heal
-                y_heal = hero.current_hp + randint(hero.stats["magic"],hero.stats["magic"]+2)
+                y_heal = hero.current_hp + randint(hero.true_magic,hero.true_magic+2)
                 print "healing light surrounds you, healing you for " + str(y_heal)
                 hero.current_hp += y_heal
-                if hero.current_hp > hero.stats["health"] :
-                    hero.current_hp = hero.stats["health"]
+                if hero.current_hp > hero.true_hp :
+                    hero.current_hp = hero.true_hp
                 print " your HP is now" + str(hero.current_hp)
                 pass
             elif player_input == 4:
                 #run away coward
-                print "You run away from the " + monster.name + "! What a coward"
+                print "You run away from the " + monster.name + "! You coward"
                 return True
             else:
                 #they should never see this
-                print "You broke it... shame on you"
+                print "You should never see this, so here's a story... once upon a time I was writing this game and got bored, and wrote this, the end"
             if monster.currenthp <= 0 :
                 print " you killed the " + monster.name
                 # this is kinda ghetto, but It makes XP scale of HP, and gold scale off luck
@@ -112,12 +116,12 @@ class Fight(object):
                 hero.gold += b
                 print " you gained " + str(a) + " Experience"
                 print " You found " + str(b) + " Gold"
-                if hero.experience >= hero.level * 10 :
+                if hero.experience >= hero.level * 15 :
                     hero.level_up()
                 return True
             else :
                 print "the "+monster.name+" is angry, it strikes at you!"
-                x = randint(monster.stats["attack"]-1,monster.stats["attack"]+1)-hero.armor
+                x = randint(monster.true_attack-1,monster.true_attack+1)-hero.armor
                 if (hero.stats["luck"] - randint(monster.level,monster.level + 10)) > 0 :
                     print " You quickly dodge out of the way"
                 else :
