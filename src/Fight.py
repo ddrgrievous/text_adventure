@@ -7,9 +7,7 @@ from random import randint
 
 
 class Fight(object):
-    #This is where the fighting logic will take place I guess haha I have no idea how this is gonna work 
-    #I guess it'll be kinda turn based or something asking what you wanna do at first'
-    #then the monster will attack, and stuff... we'll see what I do'
+    
     def __init__(self):
         pass
     def dialog(self,monster):
@@ -59,6 +57,8 @@ class Fight(object):
         #we're gonna want to pass stuff like the monster, and the hero, and probably hero input too....
         #This first part will be simple, and will ignore atributes
         #the dialog function above returns a different number based on what you choose to do
+        
+        # I think that I'm going to rewrite the damage section of this when I get home, so that 
         survived = True
         # Here I'm gonna add some more interesting elements to the storytelling
         
@@ -109,7 +109,9 @@ class Fight(object):
                 print "You should never see this, so here's a story... once upon a time I was writing this game and got bored, and wrote this, the end"
             if monster.currenthp <= 0 :
                 print " you killed the " + monster.name
-                # this is kinda ghetto, but It makes XP scale of HP, and gold scale off luck
+                # 
+                # This is where the loot is determined... This could be moved to it's own function, which I might do.
+                #
                 a  = monster.level + (hero.stats["health"]/2)
                 b = monster.level*2 + (hero.stats["luck"])
                 hero.experience += a
@@ -136,5 +138,9 @@ class Fight(object):
                     
                 else :
                     print "You survived"
-                    
+    def damage_calc (self,dmgtaken,dmgtype,target):
+        # This is where the new damage will be calculated
+        # it will be re-useable for when monster attacks hero, or when hero attacks monster
+        # It shouldn't handle death or anything, but return true if fight still happening and false if it isn't happening
+        
     
