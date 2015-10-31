@@ -17,6 +17,7 @@ class Adventurer(object):
     true_mana = 0
     true_attack = 0
     current_hp = 0
+    current_mana = 0
     level = 1
     gold = 1000
     items = []
@@ -110,11 +111,13 @@ class Adventurer(object):
         
        
         # Here Im calling the stat modifiers, so that heros have more health and stuff
+    
         self.true_hp = self.stats["health"] * 12
         self.true_attack = self.stats["attack"] * 4
         self.true_magic = self.stats["magic"] * 4
         self.true_mana = self.stats["magic"] * 5
         self.current_hp = self.true_hp
+        self.current_mana = self.true_mana
        
         
     
@@ -141,14 +144,20 @@ class Adventurer(object):
                 inp = raw_input("press a number to add a point to that stat")
                 if inp == "1" :
                     self.stats["health"] += 1
+                    self.true_hp += 12
+                    self.current_hp += 12
                     print "You added a point to health"
                     lvl_points -= 1
                 elif inp == "2" :
                     self.stats["attack"] += 1
+                    self.true_attack += 4
                     print "You added a point to attack"
                     lvl_points -= 1
                 elif inp == "3" :
                     self.stats["magic"] += 1
+                    self.true_magic += 4
+                    self.true_mana += 5
+                    self.current_mana += 5
                     print "You added a point to magic"
                     lvl_points -= 1
                 elif inp == "4" :
@@ -157,5 +166,49 @@ class Adventurer(object):
                     lvl_points -= 1
                 else :
                     print" invalid input, enter a number from 1 to 4"
+    def regenerate(self):
+        # This function will be used for natural regeneration of Health and mana
+        
+        
+        #Here is the Health portion
+        if self.stats["health"] <= 10 :
+            self.current_hp += 10
+        elif self.stats["health"] <= 20:
+            self.current_hp += 20
+        elif self.stats["health"] <= 30:
+            self.current_hp += 30
+        else :
+            self.current_hp += 45
+        if self.current_hp > self.true_hp :
+                self.current_hp = self.true_hp   
+        # Here is the mana portion
+        if self.stats["magic"] <= 5 :
+            self.current_mana += 1
+        elif self.stats["magic"] <= 10 :
+            self.current_mana += 2
+        elif self.stats["magic"] <= 15 :
+            self.current_mana += 4
+        elif self.stats["magic"] <= 20 :
+            self.current_mana += 8
+        elif self.stats["magic"] <= 25 :
+            self.current_mana += 12
+        elif self.stats["magic"] <= 30 :
+            self.current_mana += 16
+        else :
+            self.current_mana += 20
+        if self.current_mana > self.true_mana :
+                self.current_mana = self.true_mana
             
-            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

@@ -10,10 +10,33 @@ class Fight(object):
     
     def __init__(self):
         pass
-    def dialog(self,monster):
-        #I think that we should check that the player still has HP before we call this function, not as a while loop here... 
-        # also I don't want to add more indents here, so there's that too.
+    def dialog(self,monster,hero):
+        valid_input = False
         
+        while valid_input == False :
+            
+        
+            player_input = raw_input("Enter a number to indicate which action you will perform")
+            if player_input == str(1) or player_input == str(4):
+                valid_input = True
+                return int(player_input)
+            elif player_input == str(2) or player_input == str(3):
+                if hero.current_mana >= 5 :
+                    hero.current_mana -= 5
+                    valid_input = True
+                    return int(player_input)
+                else :
+                    print "You don't have enough mana!"
+                    valid_input = False
+            else :
+                print " Invalid option, your options are :"
+                print "(1) Normal attack"
+                print "(2) Magic attack (costs 5 mana)"
+                print "(3) Magic Heal(costs 5 mana)"
+                print "(4) Run away"
+                
+        
+        """    
         valid_input = False
         while valid_input == False:
             #/\ this loops so that you have to give good input
@@ -52,15 +75,16 @@ class Fight(object):
                 print "Your options are : attack, magic, run"
                 print "please choose one"
                 valid_input = False
+    """
     def fight_calcuation(self,hero,monster):
         #here's where everyone will attack I think... we'll see soon enough
-        #we're gonna want to pass stuff like the monster, and the hero, and probably hero input too....
+        #we're going to want to pass stuff like the monster, and the hero, and probably hero input too....
         #This first part will be simple, and will ignore atributes
         #the dialog function above returns a different number based on what you choose to do
         
         # I think that I'm going to rewrite the damage section of this when I get home, so that 
         survived = True
-        # Here I'm gonna add some more interesting elements to the storytelling
+        # Here I've added some more interesting elements to the story telling
         
         events = ["you are minding your own business when you stumble across a level ","As you travel, you notice a level ", "Suddenly you are ambushed by a level ","You feel a little foolish when you walk right into a level ","You are thinking about awesome stuff, and walk right into a level ","Your journeying is sudden interrupted by a level "]
         current_event = events[randint(0,len(events)-1)]
@@ -68,10 +92,14 @@ class Fight(object):
         
         
         
-        print "you have " + str(hero.current_hp) + "/" + str(hero.true_hp) + " Health," + str(hero.true_attack) + " Attack, " + str(hero.true_magic) + " Magic, " + str(hero.stats["luck"]) + " Luck!"
+        print "you have " + str(hero.current_hp) + "/" + str(hero.true_hp) + " Health," + str(hero.true_attack) + " Attack, " +str(hero.current_mana)+"/"+ str(hero.true_mana) + " Mana, " + str(hero.stats["luck"]) + " Luck!"
         print "The "+monster.name+" has " + str(monster.currenthp) + " Health, and " + str(monster.true_attack) + " attack"
+        print "(1) Normal attack"
+        print "(2) Magic attack (costs 5 mana)"
+        print "(3) Magic Heal(costs 5 mana)"
+        print "(4) Run away"
         while monster.currenthp > 0 and survived == True :
-            player_input = self.dialog(monster)
+            player_input = self.dialog(monster,hero)
             
             if player_input == 1:
                 #physical attack
@@ -143,4 +171,4 @@ class Fight(object):
         # it will be re-useable for when monster attacks hero, or when hero attacks monster
         # It shouldn't handle death or anything, but return true if fight still happening and false if it isn't happening
         
-    
+        pass

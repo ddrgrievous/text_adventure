@@ -59,11 +59,13 @@ class Game(object):
             in_city = city_handler.read_input(self, player_input)
     
     def dungeon(self):
-        player_input = raw_input("What is your business in the dungeon? : ")#placeholder
+        player_input = raw_input("You See an ominous cave, will you enter it?: ")#placeholder
         
     def fight (self):
         fight_handler = Fight()
         a = True
+        #This is the natural regeneration... it only happens when you go into combat, so you can't abuse it by walking between already/cleared areas
+        self.my_adventurer.regenerate()
         monster = Monster(self.my_adventurer.level)
         if self.my_adventurer.current_hp > 0 :
             

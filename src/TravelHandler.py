@@ -28,7 +28,7 @@ class TravelHandler(object):
             return True
         
         elif player_input.lower() == "stats":
-            print str(my_game.my_adventurer.current_hp) + "/" +  str(my_game.my_adventurer.true_hp) + "Health, " + str(my_game.my_adventurer.true_attack) + " Attack, " + str(my_game.my_adventurer.true_magic) + " magic, " + str(my_game.my_adventurer.stats["luck"]) + " luck"    
+            print str(my_game.my_adventurer.current_hp) + "/" +  str(my_game.my_adventurer.true_hp) + "Health, " + str(my_game.my_adventurer.true_attack) + " Attack, " +str(my_game.my_adventurer.current_mana)+"/"+ str(my_game.my_adventurer.true_mana) + " mana, " + str(my_game.my_adventurer.stats["luck"]) + " luck"    
             print "you are level " + str(my_game.my_adventurer.level) + " and you have " + str(my_game.my_adventurer.gold) + " Gold"
             return True
             
