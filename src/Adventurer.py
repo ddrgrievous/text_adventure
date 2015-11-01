@@ -146,6 +146,7 @@ class Adventurer(object):
                     self.stats["health"] += 1
                     self.true_hp += 12
                     self.current_hp += 12
+                    self.Checkhp()
                     print "You added a point to health"
                     lvl_points -= 1
                 elif inp == "2" :
@@ -162,6 +163,7 @@ class Adventurer(object):
                     lvl_points -= 1
                 elif inp == "4" :
                     self.stats["luck"] += 1
+                    self.Checkhp()
                     print "You added a point to luck"
                     lvl_points -= 1
                 else :
@@ -179,8 +181,7 @@ class Adventurer(object):
             self.current_hp += 30
         else :
             self.current_hp += 45
-        if self.current_hp > self.true_hp :
-                self.current_hp = self.true_hp   
+        self.Checkhp()   
         # Here is the mana portion
         if self.stats["magic"] <= 5 :
             self.current_mana += 1
@@ -196,11 +197,15 @@ class Adventurer(object):
             self.current_mana += 16
         else :
             self.current_mana += 20
+        self.Checkhp()
+            
+    def Checkhp(self):
+        # This function will check to make sure your mana and HP never go over what they are supposed to be
+        if self.current_hp > self.true_hp :
+                self.current_hp = self.true_hp
+                
         if self.current_mana > self.true_mana :
                 self.current_mana = self.true_mana
-            
-        
-        
         
         
         

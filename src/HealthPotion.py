@@ -21,5 +21,4 @@ class HealthPotion(Item):
 
     def use(self, my_adventurer):
         my_adventurer.current_hp += self.potency
-        if my_adventurer.current_hp >= my_adventurer.real_hp :
-            my_adventurer.current_hp = my_adventurer.real_hp
+        my_adventurer.Checkhp()

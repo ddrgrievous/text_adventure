@@ -3,7 +3,7 @@
 # Some things that need to be fixed
 #
 
-# ($WIP$)balancing leveling (leveling up has been added in adventurer)
+# ($WIP$)balancing gameplay
 
 #  map more frequently visible (maybe show it after a fight/transaction in the city?)
 

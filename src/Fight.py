@@ -111,7 +111,7 @@ class Fight(object):
             
                 pass
             elif player_input == 2:
-                # Don't forget to impliment mana and stuff
+                
                 #magical attack
                 y_magic =(randint(hero.true_magic-1,hero.true_magic+2))
                 if y_magic < 0 :
@@ -124,8 +124,7 @@ class Fight(object):
                 y_heal = hero.current_hp + randint(hero.true_magic,hero.true_magic+2)
                 print "healing light surrounds you, healing you for " + str(y_heal)
                 hero.current_hp += y_heal
-                if hero.current_hp > hero.true_hp :
-                    hero.current_hp = hero.true_hp
+                hero.Checkhp()
                 print " your HP is now" + str(hero.current_hp)
                 pass
             elif player_input == 4:
@@ -137,17 +136,7 @@ class Fight(object):
                 print "You should never see this, so here's a story... once upon a time I was writing this game and got bored, and wrote this, the end"
             if monster.currenthp <= 0 :
                 print " you killed the " + monster.name
-                # 
-                # This is where the loot is determined... This could be moved to it's own function, which I might do.
-                #
-                a  = monster.level + (hero.stats["health"]/2)
-                b = monster.level*2 + (hero.stats["luck"])
-                hero.experience += a
-                hero.gold += b
-                print " you gained " + str(a) + " Experience"
-                print " You found " + str(b) + " Gold"
-                if hero.experience >= hero.level * 15 :
-                    hero.level_up()
+                self.looting(hero,monster)
                 return True
             else :
                 print "the "+monster.name+" is angry, it strikes at you!"
@@ -172,3 +161,15 @@ class Fight(object):
         # It shouldn't handle death or anything, but return true if fight still happening and false if it isn't happening
         
         pass
+    def looting (self,hero,monster):
+        #Here the XP and loot are determined, it also checks if you leveled up
+        a  = monster.level + (hero.stats["health"]/2)
+        b = monster.level*2 + (hero.stats["luck"])
+        hero.experience += a
+        hero.gold += b
+        print " you gained " + str(a) + " Experience"
+        print " You found " + str(b) + " Gold"
+        if hero.experience >= hero.level * 15 :
+            hero.level_up()
+        
+        
