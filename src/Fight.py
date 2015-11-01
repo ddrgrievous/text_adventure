@@ -155,10 +155,10 @@ class Fight(object):
                     
                 else :
                     print "You survived"
-    def damage_calc (self,dmgtaken,dmgtype,target):
-        # This is where the new damage will be calculated
-        # it will be re-useable for when monster attacks hero, or when hero attacks monster
-        # It shouldn't handle death or anything, but return true if fight still happening and false if it isn't happening
+    def damage_calc (self,dmgtaken,dmgtype,monster):
+        # I'm unfocused, so I can't write this right now
+        
+        
         
         pass
     def looting (self,hero,monster):
