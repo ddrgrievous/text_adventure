@@ -23,6 +23,8 @@ class Monster(object):
     true_attack = 0
     currenthp = 1
     armor = 0
+    mresist = 0
+    #magic resistance
     
     def __init__(self,adv_level):
         # Here the monsters' stats are declared
@@ -36,29 +38,33 @@ class Monster(object):
         self.true_hp = self.stats["health"] * 12
         self.stats["attack"] = randint(self.level-(self.level/2)+1,self.level+2)
         #As does this... These variables will be replacing the old HP and Attack vars...
-        self.true_attack = self.stats["attack"] * 4
+        self.true_attack = self.stats["attack"] * 3
+        #/\-- I'm not sure how hard monsters should scale... a single monster probably shouldn't be able to kill you, but not healing in between fights might
         self.currenthp = self.true_hp
     def effects (self):
         
         if self.effect == "none" :
             return 0
         elif self.effect == "armored":
+            self.armor += 5
             return 1
         elif self.effect == "magic resistant":
+            self.mresist += 5
             return 2
+        
     def dmgtype (self):
         #["Orc","Goblin","Troll","Jared","Bandit","Zombie","Gangster rapper","Toxic goo blob","Samwise the brave",
         #"Giant hornet","Giant spider","Kobold","Direwolf","ghost","Mutated rabbit","siren","dark mage","Chimera"]
    
         if self.name == "Orc" or self.name == "Goblin" or self.name == "Troll" or self.name == "Bandit" or self.name == "Zombie" or self.name == "Samwise the brave" or self.name == "Giant hornet" or self.name == "Kobold" or self.name == "Direwolf" or self.name == "Mutated rabbit" or self.name == "Chimera" :
-            return "P"
+            return "1"
         #physical damage type
         elif self.name =="Toxic goo blob" or self.name == "Giant spider" or self.name == "Ghost" or self.name == "Siren" or self.name == "Dark mage":
-            return "M"
+            return "2"
         # Magical damage type
         else :
-            return "S"
-        #special damage type... unreducable bwahahaha
+            return "0"
+        #special damage type... unreducable bwahahaha or something haha I dunno
     
 
 

@@ -24,6 +24,7 @@ class Adventurer(object):
     weapon = Weapon(0,'start', 0)
     spells = []
     armor = 1
+    attacking = False
     
    
     
@@ -31,7 +32,7 @@ class Adventurer(object):
         self.location = Location(0,0,map)
         
     def full_heal(self):
-        
+        # lol I just wrote a fullheal somewhere else... This code is a bit better but I don't care
         self.current_hp = self.stats['health'];
     
     def create(self):
@@ -64,19 +65,19 @@ class Adventurer(object):
                 self.stats['magic']  = 1
                 self.stats['luck']   = 2
                 finished_creation = True 
-            elif self.type.lower() == 'jared':
-                #Jared is actually unkillable, because until monsters hit lvl 16 you have 100% dodge chance
-                #Because of  the way luck works
-                self.stats['health'] = 1
-                self.stats['attack'] = 1
-                self.stats['magic']  = 1
-                self.stats['luck']   = 25 
+            elif self.type.lower() == 'shopper':
+                # This is a test class, that will for sure make it to the city to buy stuff
+                # if you level up, put your points into luck, so that you can for sure see the effects of items
+                self.stats['health'] = 100
+                self.stats['attack'] = 100
+                self.stats['magic']  = 100
+                self.stats['luck']   = 5000
                 finished_creation = True
             elif self.type.lower() == 't':
                 #This is a profile that I change based on what I want to test
                 self.stats['health'] = 10
-                self.stats['attack'] = 1
-                self.stats['magic']  = 1200
+                self.stats['attack'] = 10
+                self.stats['magic']  = 1
                 self.stats['luck']   = 1 
                 finished_creation = True      
             # custom type means that they are able to choose their own stats 
@@ -168,6 +169,7 @@ class Adventurer(object):
                     lvl_points -= 1
                 else :
                     print" invalid input, enter a number from 1 to 4"
+            self.fullheal()
     def regenerate(self):
         # This function will be used for natural regeneration of Health and mana
         
@@ -198,7 +200,11 @@ class Adventurer(object):
         else :
             self.current_mana += 20
         self.Checkhp()
-            
+    def fullheal(self):
+        #full heal... yay
+        self.current_hp += 100000000
+        self.current_mana += 100000000
+        self.Checkhp()        
     def Checkhp(self):
         # This function will check to make sure your mana and HP never go over what they are supposed to be
         if self.current_hp > self.true_hp :
