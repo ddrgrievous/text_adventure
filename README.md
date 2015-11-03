@@ -9,4 +9,4 @@
 
 # Dungeons. Boss monsters are implimented, but they need somewhere to live :O
 
-# ($WIP$) weapons and items interacting with the hero.
+# ($WIP$) weapons and items interacting with the hero. Interesting note: should potions scale, or should they all just fullheal/restore.
