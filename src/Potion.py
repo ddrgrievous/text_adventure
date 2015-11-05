@@ -1,11 +1,11 @@
 '''
 Created on Oct 8, 2015
 
-@author: Jared
+@author: Jared, Ethan
 '''
 
 from Item import Item
-class HealthPotion(Item):
+class Potion(Item):
     '''
     classdocs
     '''
@@ -16,8 +16,9 @@ class HealthPotion(Item):
         Constructor
         '''
         self.potency = potency
-        super(HealthPotion,self).__init__(name, value)
+        super(Potion,self).__init__(name, value)
     
 
     def use(self, my_adventurer):
-        my_adventurer.stats['health'] += self.potency
+        my_adventurer.current_hp += self.potency
+        my_adventurer.Checkhp()

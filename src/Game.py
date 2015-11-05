@@ -8,13 +8,13 @@ from Adventurer import Adventurer
 from Map  import Map
 from TravelHandler import TravelHandler
 from CityHandler import CityHandler
-from HealthPotion import HealthPotion
+import Potion.Potion
 from Fight import Fight
 from Monster import Monster
 class Game(object):
     
-    game_items = {'weak health potion' : HealthPotion(5,'weak health potion', 20)}
-    game_weapons = {'golden axe' : Weapon(10, 'golden axe', 200)}
+    game_items = {'health potion' : Potion(5,'health potion', 20), "Mana potion" : Potion(5,"Manapotion",20)}
+    game_weapons = {'dull sword' : Weapon(10, 'dull sword', 200)}
     map = Map(10,20)
     my_adventurer = Adventurer(map)
     in_play = False
@@ -59,11 +59,13 @@ class Game(object):
             in_city = city_handler.read_input(self, player_input)
     
     def dungeon(self):
-        player_input = raw_input("What is your business in the dungeon? : ")#placeholder
+        player_input = raw_input("You See an ominous cave, will you enter it?: ")#placeholder
         
     def fight (self):
         fight_handler = Fight()
         a = True
+        #This is the natural regeneration... it only happens when you go into combat, so you can't abuse it by walking between already/cleared areas
+        self.my_adventurer.regenerate()
         monster = Monster(self.my_adventurer.level)
         if self.my_adventurer.current_hp > 0 :
             

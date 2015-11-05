@@ -28,12 +28,12 @@ class TravelHandler(object):
             return True
         
         elif player_input.lower() == "stats":
-            print str(my_game.my_adventurer.current_hp) + "/" +  str(my_game.my_adventurer.stats["health"]) + "Health, " + str(my_game.my_adventurer.stats["attack"]) + " Attack, " + str(my_game.my_adventurer.stats["magic"]) + " magic, " + str(my_game.my_adventurer.stats["luck"]) + " luck"    
+            print str(my_game.my_adventurer.current_hp) + "/" +  str(my_game.my_adventurer.true_hp) + "Health, " + str(my_game.my_adventurer.true_attack) + " Attack, " +str(my_game.my_adventurer.current_mana)+"/"+ str(my_game.my_adventurer.true_mana) + " mana, " + str(my_game.my_adventurer.stats["luck"]) + " luck"    
             print "you are level " + str(my_game.my_adventurer.level) + " and you have " + str(my_game.my_adventurer.gold) + " Gold"
             return True
             
         elif player_input.lower() =="heal":
-            my_game.my_adventurer.current_hp = my_game.my_adventurer.stats["health"]
+            my_game.my_adventurer.current_hp = my_game.my_adventurer.true_hp
             print "you heal yourself back to full health"
         
         
@@ -101,5 +101,5 @@ class TravelHandler(object):
         print 'left: Move adventurer left.'  
         print 'map: View the map.'
         print "stats: Veiw your stats"
-        print "heal: heal yourself back to full"
+        print "heal: heal yourself back to full, which costs 5 mana"
         print 'quit: Quit the game.'       
