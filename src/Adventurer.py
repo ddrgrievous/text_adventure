@@ -65,21 +65,26 @@ class Adventurer(object):
                 self.stats['magic']  = 1
                 self.stats['luck']   = 2
                 finished_creation = True 
-            elif self.type.lower() == 'shopper':
+            elif self.type.lower() == 'demon_lord':
                 # This is a test class, that will for sure make it to the city to buy stuff
                 # if you level up, put your points into luck, so that you can for sure see the effects of items
                 self.stats['health'] = 100
                 self.stats['attack'] = 100
                 self.stats['magic']  = 100
-                self.stats['luck']   = 5000
+                self.stats['luck']   = -100
                 finished_creation = True
-            elif self.type.lower() == 't':
+            elif self.type.lower() == 'Jared':
                 #This is a profile that I change based on what I want to test
-                self.stats['health'] = 10
-                self.stats['attack'] = 10
-                self.stats['magic']  = 1
+                self.stats['health'] = 1
+                self.stats['attack'] = 1
+                self.stats['magic']  = 2
                 self.stats['luck']   = 1 
-                finished_creation = True      
+                finished_creation = True   
+            elif self.type.lower() == "Ethan":
+                self.stats['health'] = 4
+                self.stats["attack"] = 5
+                self.stats["magic"] = 2
+                self.stats["luck"] = 10000   
             # custom type means that they are able to choose their own stats 
             elif self.type.lower() == 'custom':
                 print 'You get a total of 15 points to assign between attack, health, luck, and magic.'

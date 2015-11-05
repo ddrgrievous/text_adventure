@@ -8,7 +8,7 @@ from Adventurer import Adventurer
 from Map  import Map
 from TravelHandler import TravelHandler
 from CityHandler import CityHandler
-import Potion.Potion
+from HealthPotion import Potion
 from Fight import Fight
 from Monster import Monster
 class Game(object):
@@ -36,13 +36,18 @@ class Game(object):
             if player_input.lower() == "start":
                 self.my_adventurer.create()
                 valid_input = True
+            elif player_input.lower() == "load" :
+                filename = raw_input("What file would you like to load?")
+                open (filename.lower(),"w")
                 
+                valid_input = True
         print "Good Luck " + self.my_adventurer.name + "!"
         
         
     def quit(self):
         self.in_play = False
         print "Come back soon!"
+        
         
     def travel(self):
         traveling = True

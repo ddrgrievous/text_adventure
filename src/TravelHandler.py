@@ -1,7 +1,7 @@
 '''
 Created on Oct 2, 2015
 
-@author: Jared
+@author: Jared, Ethan
 '''
 
 # Hey i took this out because you don't seem to have to import it, and importing it causes a circular dependency...
@@ -33,8 +33,12 @@ class TravelHandler(object):
             return True
             
         elif player_input.lower() =="heal":
-            my_game.my_adventurer.current_hp = my_game.my_adventurer.true_hp
-            print "you heal yourself back to full health"
+            if my_game.my_adventurer.current_mana >= 5 :
+                
+                my_game.my_adventurer.current_hp = my_game.my_adventurer.true_hp
+                print "you heal yourself back to full health"
+            else :
+                print " You don't have enough mana!"
         
         
         # move adventurer down     
