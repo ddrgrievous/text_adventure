@@ -9,9 +9,10 @@ from Map  import Map
 from Dungeon_map import Dungeon_map
 from TravelHandler import TravelHandler
 from CityHandler import CityHandler
-from Potion import Potion
+from HealthPotion import Potion
 from Fight import Fight
 from Monster import Monster
+from boss import boss
 from Location import Location
 import time
 from random import randint
@@ -42,7 +43,11 @@ class Game(object):
             if player_input.lower() == "start":
                 self.my_adventurer.create()
                 valid_input = True
+            elif player_input.lower() == "load" :
+                filename = raw_input("What file would you like to load?")
+                open (filename.lower(),"w")
                 
+                valid_input = True
         print "Good Luck " + self.my_adventurer.name + "!"
         
         
@@ -50,6 +55,7 @@ class Game(object):
         self.in_play = False
         print "Come back soon!"
         time.sleep(5)
+        
         
         
     def travel(self):
@@ -96,12 +102,17 @@ class Game(object):
         self.my_adventurer.gold += amount
         self.map.current_space = ' '
             
-    def fight (self):
+    def fight (self,isboss):
         fight_handler = Fight()
         a = True
         #This is the natural regeneration... it only happens when you go into combat, so you can't abuse it by walking between already/cleared areas
         self.my_adventurer.regenerate()
-        monster = Monster(self.my_adventurer.level)
+        
+        if isboss == False :
+            monster = Monster(self.my_adventurer.level)
+        elif isboss == True:
+            monster = boss(self.my_adventurer.level)
+        
         if self.my_adventurer.current_hp > 0 :
             
             a =  fight_handler.fight_calcuation(self.my_adventurer, monster)

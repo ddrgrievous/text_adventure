@@ -17,7 +17,10 @@ if __name__ == '__main__':
             my_game.dungeon()
             
         if my_game.map.current_space.lower() =='m':
-            my_game.fight()
+            my_game.fight(False)
+            my_game.map.monsterdeath()
+        if my_game.map.current_space.lower() =="b":
+            my_game.fight(True)
             my_game.map.monsterdeath()
             
         if my_game.map.current_space.lower() == 'x':

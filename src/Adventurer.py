@@ -1,7 +1,7 @@
 '''
 Created on Oct 1, 2015
 
-@author: Jared
+@author: Jared, Ethan
 '''
 from Location import Location
 from Weapon import Weapon
@@ -65,21 +65,26 @@ class Adventurer(object):
                 self.stats['magic']  = 1
                 self.stats['luck']   = 2
                 finished_creation = True 
-            elif self.type.lower() == 'shopper':
+            elif self.type.lower() == 'demon_lord':
                 # This is a test class, that will for sure make it to the city to buy stuff
                 # if you level up, put your points into luck, so that you can for sure see the effects of items
                 self.stats['health'] = 100
                 self.stats['attack'] = 100
                 self.stats['magic']  = 100
-                self.stats['luck']   = 5000
+                self.stats['luck']   = -100
                 finished_creation = True
-            elif self.type.lower() == 't':
+            elif self.type.lower() == 'Jared':
                 #This is a profile that I change based on what I want to test
-                self.stats['health'] = 10
-                self.stats['attack'] = 10
-                self.stats['magic']  = 1
+                self.stats['health'] = 1
+                self.stats['attack'] = 1
+                self.stats['magic']  = 2
                 self.stats['luck']   = 1 
-                finished_creation = True      
+                finished_creation = True   
+            elif self.type.lower() == "Ethan":
+                self.stats['health'] = 4
+                self.stats["attack"] = 5
+                self.stats["magic"] = 2
+                self.stats["luck"] = 10000   
             # custom type means that they are able to choose their own stats 
             elif self.type.lower() == 'custom':
                 print 'You get a total of 15 points to assign between attack, health, luck, and magic.'
@@ -112,7 +117,8 @@ class Adventurer(object):
         
        
         # Here Im calling the stat modifiers, so that heros have more health and stuff
-    
+        self.realstats()
+    def realstats(self):
         self.true_hp = self.stats["health"] * 12
         self.true_attack = self.stats["attack"] * 4
         self.true_magic = self.stats["magic"] * 4
@@ -145,31 +151,30 @@ class Adventurer(object):
                 inp = raw_input("press a number to add a point to that stat")
                 if inp == "1" :
                     self.stats["health"] += 1
-                    self.true_hp += 12
-                    self.current_hp += 12
-                    self.Checkhp()
+                    
                     print "You added a point to health"
                     lvl_points -= 1
                 elif inp == "2" :
                     self.stats["attack"] += 1
-                    self.true_attack += 4
+                    
                     print "You added a point to attack"
                     lvl_points -= 1
                 elif inp == "3" :
                     self.stats["magic"] += 1
-                    self.true_magic += 4
-                    self.true_mana += 5
-                    self.current_mana += 5
+                    
                     print "You added a point to magic"
                     lvl_points -= 1
                 elif inp == "4" :
                     self.stats["luck"] += 1
-                    self.Checkhp()
+                    
                     print "You added a point to luck"
                     lvl_points -= 1
                 else :
                     print" invalid input, enter a number from 1 to 4"
+                    
             self.fullheal()
+            self.Checkhp()
+            self.realstats()
     def regenerate(self):
         # This function will be used for natural regeneration of Health and mana
         
