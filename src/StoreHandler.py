@@ -83,6 +83,8 @@ class StoreHandler(object):
                         
                         my_game.my_adventurer.stats['attack'] += self.store_items[i].attk_mod
                         
+                        my_game.my_adventurer.realstats()
+                        
                         my_game.my_adventurer.weapon = self.store_items[i]
                         
                         print "Weapon purchased\n"

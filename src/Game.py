@@ -19,7 +19,7 @@ from random import randint
 class Game(object):
     
     game_items = {'health potion' : Potion(5,'health potion', 20), "Mana potion" : Potion(5,"Manapotion",20)}
-    game_weapons = {'dull sword' : Weapon(10, 'dull sword', 200)}
+    game_weapons = {'dull sword' : Weapon(1, 'dull sword', 200), "Steel sword" : Weapon(3,"Steel Sword",400),"War axe" : Weapon(5,"War axe",1000) }
     map_storage = []
     location_storage = []
     map = Map(10,20)
@@ -93,7 +93,7 @@ class Game(object):
             self.map.current_space = ' '
             
     def found_treasure(self):
-        amount = randint(5,300) * (len(self.map_storage) + 1)
+        amount = randint(5+ self.my_adventurer.stats["luck"],30 + self.my_adventurer.stats["luck"]) * (len(self.map_storage) + 1)
         print "********************************************"
         print "********** YOU FOUND " + str(amount) + " Gold!" + "**********"
         print "********************************************" 

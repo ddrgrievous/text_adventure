@@ -52,11 +52,11 @@ class Map(object):
     def discover_location(self):
         random_num = randint(1, 100)
         
-        if random_num % 2 == 0:
+        if random_num % 10 == 0:
             return 'D'
-        elif random_num % 1 == 0:
+        elif random_num % 15== 0:
             return 'C'
-        elif random_num % 5 == 0:
+        elif random_num % 3 == 0:
             return 'M'
         else:
             return ' '                 

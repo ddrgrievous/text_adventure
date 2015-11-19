@@ -8,6 +8,7 @@ from random import randint
 class Monster(object):
     name = ""
     effect = ""
+    isboss = False
     monster_names = ["Orc","Goblin","Troll","Jared","Bandit","Zombie","Gangster rapper","Toxic goo blob","Samwise the brave","Giant hornet","Giant spider","Kobold","Direwolf","Ghost","Mutated rabbit","Siren","Dark mage","Chimera"]
     monster_effects = ["none","armored","magic resistant","agile","regeneration","godlike armor","magic immune"]
     # --------------------------monster_effects_explained----------------------------------------------------------

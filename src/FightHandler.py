@@ -17,7 +17,8 @@ class Fight(object):
         valid_input = False
         while valid_input == False:
             #/\ this loops so that you have to give good input
-            player_input = raw_input("What attack would you like to perform?")
+            print "********************************************"
+            player_input = raw_input("What attack would you like to perform? :")
             if player_input.lower() == "attack":
                 valid_input = True
                 # here the damage will be dealt , as physical/normal damage
@@ -80,7 +81,7 @@ class Fight(object):
         else:
             #they should never see this
             print "You broke it... shame on you"
-        
+        print "********************************************"
     def loot (self,hero,monster):
         #In this the loot (xp and gold) from a battle will be determined
         hero.experience = hero.experience + monster.level

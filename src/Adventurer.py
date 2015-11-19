@@ -51,7 +51,9 @@ class Adventurer(object):
             
             if self.type.lower() == 'beserker':
                 self.stats['health'] = 6
-                self.stats['attack'] = 9
+                self.stats['attack'] = 8
+                self.stats["magic"]  = 0
+                self.stats["luck"]   = 1
                 finished_creation = True        
             elif self.type.lower() == 'mage':
                 self.stats['health'] = 5
@@ -71,20 +73,20 @@ class Adventurer(object):
                 self.stats['health'] = 100
                 self.stats['attack'] = 100
                 self.stats['magic']  = 100
-                self.stats['luck']   = -100
+                self.stats['luck']   = 0
                 finished_creation = True
             elif self.type.lower() == 'Jared':
                 #This is a profile that I change based on what I want to test
-                self.stats['health'] = 1
+                self.stats['health'] = 6
                 self.stats['attack'] = 1
-                self.stats['magic']  = 2
-                self.stats['luck']   = 1 
+                self.stats['magic']  = 6
+                self.stats['luck']   = 4 
                 finished_creation = True   
             elif self.type.lower() == "Ethan":
-                self.stats['health'] = 4
-                self.stats["attack"] = 5
-                self.stats["magic"] = 2
-                self.stats["luck"] = 10000   
+                self.stats['health'] = 7
+                self.stats["attack"] = 6
+                self.stats["magic"]  = 1
+                self.stats["luck"]   = 3
             # custom type means that they are able to choose their own stats 
             elif self.type.lower() == 'custom':
                 print 'You get a total of 15 points to assign between attack, health, luck, and magic.'
@@ -137,7 +139,9 @@ class Adventurer(object):
        
     def level_up(self):
             self.experience = 0
+            print "********************************************"
             print " you leveled up!"
+            print "********************************************"
             self.level += 1
             print "You are now level" + str(self.level)
             print "You get 3 points to put into stats!"

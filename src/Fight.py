@@ -19,7 +19,7 @@ class Fight(object):
             
             print  str(hero.current_hp) + "/" + str(hero.true_hp) + " HP," +str(hero.current_mana)+"/"+ str(hero.true_mana) + " Mana, "
             print monster.name+" " + str(monster.currenthp) + " Hp, " + str(monster.true_attack) + " atk"
-            player_input = raw_input("Enter a number to indicate which action you will perform")
+            player_input = raw_input("Enter a number to indicate which action you will perform? : ")
             if player_input == str(1) or player_input == str(3):
                 valid_input = True
                 return int(player_input)
@@ -36,7 +36,7 @@ class Fight(object):
                 print "(1) Normal attack"
                 print "(2) Magic attack (costs 5 mana)"
                 print "(3) Run away"
-                
+                print "********************************************"
         
         
     def fight_calcuation(self,hero,monster):
@@ -57,6 +57,7 @@ class Fight(object):
         print "(1) Normal attack"
         print "(2) Magic attack (costs 5 mana)"
         print "(3) Run away"
+        print "********************************************"
         while monster.currenthp > 0 and survived == True :
             player_input = self.dialog(monster,hero)
             
@@ -72,6 +73,7 @@ class Fight(object):
            
             if monster.currenthp <= 0 :
                 print " you killed the " + monster.name
+                print "********************************************"
                 self.looting(hero,monster)
                 return True
             else :
@@ -119,8 +121,8 @@ class Fight(object):
         pass
     def looting (self,hero,monster):
         #Here the XP and loot are determined, it also checks if you leveled up
-        a  = monster.level + (hero.stats["health"]/2)
-        b = monster.level*2 + (hero.stats["luck"])
+        a  = randint(monster.level/2,monster.level * 2)
+        b = randint((monster.level + hero.stats["luck"]/2) + 1,(monster.level + hero.stats["luck"] * 2))
         hero.experience += a
         hero.gold += b
         print " you gained " + str(a) + " Experience"

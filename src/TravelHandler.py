@@ -36,6 +36,7 @@ class TravelHandler(object):
             if my_game.my_adventurer.current_mana >= 5 :
                 
                 my_game.my_adventurer.current_hp = my_game.my_adventurer.true_hp
+                my_game.my_adventurer.current_mana -= 5
                 print "you heal yourself back to full health"
             else :
                 print " You don't have enough mana!"
