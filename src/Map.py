@@ -54,9 +54,9 @@ class Map(object):
         
         if random_num % 15 == 0:
             return 'D'
-        elif random_num % 10 == 0:
+        elif random_num % 1 == 0:
             return 'C'
-        elif random_num % 2 == 0:
+        elif random_num % 5 == 0:
             return 'M'
         else:
             return ' '                 

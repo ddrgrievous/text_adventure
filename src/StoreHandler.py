@@ -33,7 +33,7 @@ class StoreHandler(object):
             self.store_items.append(my_game.game_items[key])
         
         # if they are lucky a weapon will appear for sale    
-        if randint(1,2) == 2:
+        if randint(1,3) == 2:
             # randomly select the weapon
             key = random.choice(my_game.game_weapons.keys())
             
@@ -78,15 +78,18 @@ class StoreHandler(object):
                 if my_game.my_adventurer.gold >= self.store_items[i].value:
                     
                     if self.store_items[i].type == 'weapon':
+                
+                        my_game.my_adventurer.stats['attack'] -= my_game.my_adventurer.weapon.attk_mod
+                        
+                        my_game.my_adventurer.stats['attack'] += self.store_items[i].attk_mod
+                        
                         my_game.my_adventurer.weapon = self.store_items[i]
+                        
+                        print "Weapon purchased\n"
                     else:    
-                        my_game.my_adventurer.stats['attack'] -= my_game.my_adventurer.weapon.attk_mod;
-                        
-                        my_game.my_adventurer.stats['attack'] += self.store_items[i].attk_mod;
-                        
                         # add to the adventurer's inventory
                         my_game.my_adventurer.items.append(self.store_items[i])
-                    print "Item purchased"
+                        print "Item purchased\n"
                     
                     # take the money away from the adventurer
                     my_game.my_adventurer.gold -= int(self.store_items[i].value * self.price_variation)

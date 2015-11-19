@@ -21,7 +21,7 @@ class Adventurer(object):
     level = 1
     gold = 1000
     items = []
-    weapon = Weapon(0,'start', 0)
+    weapon = Weapon(0,'wooden stick', 0)
     spells = []
     armor = 1
     attacking = False
