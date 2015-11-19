@@ -94,6 +94,8 @@ class TravelHandler(object):
             return False
         elif my_game.map.current_space.lower() =='m':
             return False
+        elif my_game.map.current_space.lower() == "b":
+            return False
         elif my_game.map.current_space.lower() =='d':
             return False
         elif my_game.map.current_space.lower() =='x':

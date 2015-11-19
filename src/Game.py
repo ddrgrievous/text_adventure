@@ -12,6 +12,7 @@ from CityHandler import CityHandler
 from HealthPotion import Potion
 from Fight import Fight
 from Monster import Monster
+from boss import boss
 from Location import Location
 import time
 from random import randint
@@ -101,12 +102,17 @@ class Game(object):
         self.my_adventurer.gold += amount
         self.map.current_space = ' '
             
-    def fight (self):
+    def fight (self,isboss):
         fight_handler = Fight()
         a = True
         #This is the natural regeneration... it only happens when you go into combat, so you can't abuse it by walking between already/cleared areas
         self.my_adventurer.regenerate()
-        monster = Monster(self.my_adventurer.level)
+        
+        if isboss == False :
+            monster = Monster(self.my_adventurer.level)
+        elif isboss == True:
+            monster = boss(self.my_adventurer.level)
+        
         if self.my_adventurer.current_hp > 0 :
             
             a =  fight_handler.fight_calcuation(self.my_adventurer, monster)
