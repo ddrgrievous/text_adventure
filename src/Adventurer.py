@@ -1,7 +1,7 @@
 '''
 Created on Oct 1, 2015
 
-@author: Jared
+@author: Jared, Ethan
 '''
 from Location import Location
 from Weapon import Weapon
@@ -117,7 +117,8 @@ class Adventurer(object):
         
        
         # Here Im calling the stat modifiers, so that heros have more health and stuff
-    
+        self.realstats()
+    def realstats(self):
         self.true_hp = self.stats["health"] * 12
         self.true_attack = self.stats["attack"] * 4
         self.true_magic = self.stats["magic"] * 4
@@ -150,31 +151,30 @@ class Adventurer(object):
                 inp = raw_input("press a number to add a point to that stat")
                 if inp == "1" :
                     self.stats["health"] += 1
-                    self.true_hp += 12
-                    self.current_hp += 12
-                    self.Checkhp()
+                    
                     print "You added a point to health"
                     lvl_points -= 1
                 elif inp == "2" :
                     self.stats["attack"] += 1
-                    self.true_attack += 4
+                    
                     print "You added a point to attack"
                     lvl_points -= 1
                 elif inp == "3" :
                     self.stats["magic"] += 1
-                    self.true_magic += 4
-                    self.true_mana += 5
-                    self.current_mana += 5
+                    
                     print "You added a point to magic"
                     lvl_points -= 1
                 elif inp == "4" :
                     self.stats["luck"] += 1
-                    self.Checkhp()
+                    
                     print "You added a point to luck"
                     lvl_points -= 1
                 else :
                     print" invalid input, enter a number from 1 to 4"
+                    
             self.fullheal()
+            self.Checkhp()
+            self.realstats()
     def regenerate(self):
         # This function will be used for natural regeneration of Health and mana
         
